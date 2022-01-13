@@ -1,6 +1,11 @@
 # filebeat output loki
 
-`filebeat` official built not support output `loki` via grafana
+`filebeat` official release not support output `loki` via grafana
+
+## use
+```shell
+docker pull ghcr.io/wolanx/filebeat:main
+```
 
 ## config demo
 
@@ -14,10 +19,11 @@ filebeat.inputs:
 
 output.loki:
   hosts: [ 'localhost:3100' ]
+  is_grpc: false
 ```
 
 ```yml
-# grpc
+# grpc recommend
 filebeat.inputs:
   - type: log
     enabled: true
@@ -26,4 +32,5 @@ filebeat.inputs:
 
 output.loki:
   hosts: [ 'localhost:9095' ]
+  is_grpc: true
 ```

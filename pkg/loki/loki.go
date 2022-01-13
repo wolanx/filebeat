@@ -27,6 +27,7 @@ func init() {
 }
 
 type lokiConfig struct {
+	IsGrpc bool `config:"is_grpc"`
 }
 
 func newLoki(_ outputs.IndexManager, _ beat.Info, observer outputs.Observer, cfg *common.Config) (outputs.Group, error) {
@@ -44,6 +45,7 @@ func newLoki(_ outputs.IndexManager, _ beat.Info, observer outputs.Observer, cfg
 	for i, host := range hosts {
 		clients[i] = &lokiClient{
 			host:     host,
+			isGrpc:   config.IsGrpc,
 			observer: observer,
 		}
 	}
@@ -53,6 +55,7 @@ func newLoki(_ outputs.IndexManager, _ beat.Info, observer outputs.Observer, cfg
 
 type lokiClient struct {
 	host     string
+	isGrpc   bool
 	client   *http.Client
 	grpc     logproto.PusherClient
 	observer outputs.Observer
