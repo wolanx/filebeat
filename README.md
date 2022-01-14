@@ -18,12 +18,12 @@ filebeat.inputs:
       - C:\Users\admin\Desktop\pic\*.log
 
 output.loki:
-  hosts: [ 'localhost:3100' ]
-  is_grpc: false
+  hosts: [ 'svc-loki:3100' ]
+  protocol: http
 ```
 
 ```yml
-# grpc recommend
+# grpc recommend default
 filebeat.inputs:
   - type: log
     enabled: true
@@ -31,6 +31,6 @@ filebeat.inputs:
       - C:\Users\admin\Desktop\pic\*.log
 
 output.loki:
-  hosts: [ 'localhost:9095' ]
-  is_grpc: true
+  hosts: [ 'svc-loki:9095' ]
+  protocol: grpc
 ```
