@@ -4,7 +4,7 @@
 
 ## use
 ```shell
-docker pull ghcr.io/wolanx/filebeat:main
+docker pull ghcr.io/wolanx/filebeat
 ```
 
 ## config demo
